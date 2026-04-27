@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Waste Classification</title>
+    <style>
+        body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    background-image: url("{{ url_for('static', filename='vectorbackground.jpg') }}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background: rgba(175, 213, 98, 0.804);
+    padding: 40px;
+    border-radius: 20px;
+    width: 450px;
+    text-align: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    color: black;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+input[type="file"] {
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #00c853;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+.result {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.result h3 {
+    font-size: 22px;
+    font-weight: 800;
+}
+
+.result p {
+    font-size: 16px;
+    font-weight: 600;
+}
+.preview {
+    margin-top: 20px;
+    width: 100%;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #ffffff;
+}
+
+#preview-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+
+    </style>
+
+    <script>
+        function previewImage(event) {
+            const reader = new FileReader();
+            reader.onload = function(){
+                const output = document.getElementById('preview-img');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>♻ AI Waste Classifier</h1>
+    <p class="subtitle">Upload an image to identify the waste type</p>
+
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="image" accept="image/*" onchange="previewImage(event)" required>
+        <br>
+        <button type="submit">Predict</button>
+    </form>
+
+    <div class="preview">
+    {% if image_file %}
+        <img src="{{ url_for('static', filename=image_file) }}" />
+    {% else %}
+        <img id="preview-img"/>
+    {% endif %}
+    </div>
+
+
+{% if prediction %}
+<div class="result">
+    <h3>Prediction: {{ prediction|capitalize }}</h3>
+    <p>Confidence: {{ confidence }}%</p>
+
+    {% if info %}
+        <p style="margin-top:10px; font-weight:600;">
+            {{ info }}
+        </p>
+    {% endif %}
+</div>
+{% endif %}
+    </p>
+</div>
+    {% endif %}
+</div>
+
+</body>
+</html>
