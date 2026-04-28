@@ -35,7 +35,15 @@ The system includes a Flask-based web interface that allows users to upload imag
 
 ## Implementation of 7 Classes 
 
-The model is designed to classify waste into seven distinct categories: Glass, Metal, Organic, Paper, Plastic, Textile, and E-Waste. Each class represents a common type of waste encountered in real-world segregation scenarios. Glass includes bottles and transparent materials, while Metal covers items such as cans and metallic objects. Organic consists of biodegradable waste like food scraps, whereas Paper includes recyclable paper-based materials. Plastic represents various synthetic packaging materials, and Textile includes fabric-related waste such as clothes. E-Waste covers electronic items and components that require specialized disposal. These classes enable the system to perform structured and practical waste categorization aligned with real-world recycling processes.
+The model is designed to classify waste into seven distinct categories:
+ * Glass
+ * Metal
+ * Organic
+ * Paper
+ * Plastic
+ * Textile
+ * E-Waste
+Each class represents a common type of waste encountered in real-world segregation scenarios. Glass includes bottles and transparent materials, while Metal covers items such as cans and metallic objects. Organic consists of biodegradable waste like food scraps, whereas Paper includes recyclable paper-based materials. Plastic represents various synthetic packaging materials, and Textile includes fabric-related waste such as clothes. E-Waste covers electronic items and components that require specialized disposal. These classes enable the system to perform structured and practical waste categorization aligned with real-world recycling processes.
 
 ---
 
@@ -54,6 +62,7 @@ The model is designed to classify waste into seven categories to maintain a bala
 
 ## Project Structure
 
+```
 Waste-Classification-CNN-System/
 │
 ├── app.py
@@ -69,5 +78,10 @@ Waste-Classification-CNN-System/
 ├── templates/
 │
 └── demo/
+```
 
 ---
+
+## Authur 
+Shreyash Dahiwale 
+Software Developer | Engineer
