@@ -83,5 +83,5 @@ Waste-Classification-CNN-System/
 ---
 
 ## Authur 
-Shreyash Dahiwale 
+Shreyash Dahiwale  
 Software Developer | Engineer
